@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Order_OrderDetail.Entities;
 using Order_OrderDetail.DTOs;
 using Order_OrderDetail.DATA;
@@ -31,6 +31,20 @@ namespace Order_OrderDetail.Services
             orderEntity.ORDER_DATE = orderRequestModel.ORDER_DATE;
             orderEntity.ITEM_COUNT = orderRequestModel.ITEM_COUNT;
             orderEntity.ORDER_PRICE = orderRequestModel.ORDER_PRICE;
+            orderEntity.OrderDetails = new List<OrderDetailEntity>();
+
+            foreach (var order_detail in orderRequestModel.OrderDetails)
+            {
+
+                    OrderDetailEntity orderDetailEntity = new OrderDetailEntity();
+
+                    orderDetailEntity.ITEM_NAME = order_detail.ITEM_NAME;
+                    orderDetailEntity.ITEM_QUANTITY = order_detail.ITEM_QUANTITY;
+                    orderDetailEntity.ITEM_UNIT = order_detail.ITEM_UNIT;
+                    orderDetailEntity.ID_ORDER = orderEntity.ID_ORDER;
+               
+                    orderEntity.OrderDetails.Add(orderDetailEntity);
+            }
 
 
             _dbContext.Order.Add(orderEntity);

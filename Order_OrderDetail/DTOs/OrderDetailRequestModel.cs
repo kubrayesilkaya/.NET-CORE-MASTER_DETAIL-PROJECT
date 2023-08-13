@@ -1,4 +1,4 @@
-﻿namespace Order_OrderDetail.DTOs
+namespace Order_OrderDetail.DTOs
 {
     public class OrderDetailRequestModel
     {
