@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LMTUFH8q80yKQ1yHpERB8EkYmfb/r1zlbxvX8Y4gNqVuQ700OyvijWUtM8pg1Kgx2QtYmAA8U9O+/hjnXx4uWQ==",
+  "dgSpecHash": "Bc/oQKgDGTDGOS9zK5zmyajkBbFUo5DhLPa6MWIHs7R4BeziCQ9lD0yCCyRn94ikeUz7jAxtagh+vTe7KjVx3g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kubra\\Desktop\\Order_OrderDetail\\Order_OrderDetail\\Order_OrderDetail.csproj",
+  "projectFilePath": "C:\\Users\\kubra\\Documents\\GitHub\\.NET-CORE-MASTER_DETAIL-PROJECT\\Order_OrderDetail\\Order_OrderDetail\\Order_OrderDetail.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kubra\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\kubra\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

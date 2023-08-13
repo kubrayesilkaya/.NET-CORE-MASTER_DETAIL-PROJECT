@@ -7,16 +7,26 @@ namespace Order_OrderDetail.DATA
     {
         public OrderDBContext(DbContextOptions<OrderDBContext> options) : base(options) 
         { }
-        public DbSet<OrderEntity> Order { get; set; }
+        public DbSet<OrderEntity> Orders { get; set; }
         public DbSet<OrderDetailEntity> OrderDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        {   
             modelBuilder.Entity<OrderDetailEntity>()
-                .HasOne(o => o.Order)
-                .WithMany(od => od.OrderDetails)
-                .HasForeignKey(f => f.ID_ORDER);
+                .HasOne(od => od.Order)
+                .WithMany(o => o.OrderDetails)
+                .HasForeignKey(f => f.ID_ORDER)
+                .IsRequired(); 
+            
                 
         }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<OrderEntity>()
+        //        .HasMany(o => o.OrderDetails)
+        //        .WithOne(od => od.Order)
+        //        .HasForeignKey(f => f.ID_ORDER);
+
+        //}
     }
 }

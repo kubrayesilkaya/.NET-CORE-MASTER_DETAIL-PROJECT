@@ -9,7 +9,7 @@ namespace Order_OrderDetail.DTOs
         public DateTime ORDER_DATE { get; set; }
         public int ITEM_COUNT { get; set; }
         public decimal ORDER_PRICE { get; set; }
-        public List<OrderDetailRequestModel> OrderDetails { get; set; }
+        public ICollection<OrderDetailRequestModel> OrderDetails { get; set; }
 
     }
 }

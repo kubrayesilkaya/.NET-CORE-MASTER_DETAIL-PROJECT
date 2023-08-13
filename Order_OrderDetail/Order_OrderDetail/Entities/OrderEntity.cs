@@ -14,7 +14,7 @@ namespace Order_OrderDetail.Entities
         public DateTime ORDER_DATE { get; set; }
         public int ITEM_COUNT { get;set; }
         public decimal ORDER_PRICE { get; set; }
-        public ICollection<OrderDetailEntity> OrderDetails { get; set; } //principal (parent)
+        public ICollection<OrderDetailEntity> OrderDetails { get; set; } //collection navigation property
 
         //Bir Order'ın birden fazla orderDetail'i olabilir. Çoğul olduğu için OderDetails.
 

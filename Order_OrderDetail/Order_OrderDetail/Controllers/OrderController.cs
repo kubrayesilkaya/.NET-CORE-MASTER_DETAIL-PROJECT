@@ -43,6 +43,16 @@ namespace Order_OrderDetail.Controllers
             return Ok(orders);
         }
 
+        //GET by ID*****************************************************************************************
+
+        [Route("[action]/{id}")]
+        [HttpGet]
+        public ActionResult<OrderEntity> GetOrderDetail(int id)
+        {
+            var orders = _orderService.GetOrderDetail(id);
+            return Ok(orders);
+        }
+
 
 
 
