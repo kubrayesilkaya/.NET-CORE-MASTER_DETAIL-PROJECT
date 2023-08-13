@@ -27,11 +27,16 @@ namespace Order_OrderDetail.Services
             }
 
             OrderEntity orderEntity = new OrderEntity();
+            
             orderEntity.LOCATION = orderRequestModel.LOCATION;
             orderEntity.ORDER_DATE = orderRequestModel.ORDER_DATE;
             orderEntity.ITEM_COUNT = orderRequestModel.ITEM_COUNT;
             orderEntity.ORDER_PRICE = orderRequestModel.ORDER_PRICE;
-            orderEntity.OrderDetails = new List<OrderDetailEntity>();
+            
+            _dbContext.Order.Add(orderEntity);
+            _dbContext.SaveChanges();            
+            
+            List<OrderDetailEntity> tempOrderDetail = new List<OrderDetailEntity>();
 
             foreach (var order_detail in orderRequestModel.OrderDetails)
             {
@@ -43,12 +48,15 @@ namespace Order_OrderDetail.Services
                     orderDetailEntity.ITEM_UNIT = order_detail.ITEM_UNIT;
                     orderDetailEntity.ID_ORDER = orderEntity.ID_ORDER;
                
-                    orderEntity.OrderDetails.Add(orderDetailEntity);
+                    tempOrderDetail.Add(orderDetailEntity);
             }
 
+            if(tempOrderDetail != null)
+            {
+                _dbContext.OrderDetails.AddRange(tempOrderDetail);
+                _dbContext.SaveChanges();
+            }
 
-            _dbContext.Order.Add(orderEntity);
-            _dbContext.SaveChanges();
 
 
             return "Sipariş kaydedildi.";
