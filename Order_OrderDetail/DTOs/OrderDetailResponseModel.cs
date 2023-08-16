@@ -2,12 +2,12 @@
 {
     public class OrderDetailResponseModel
     {
-        public int ID_ORDER { get; set; }
-        public int ORDER_DETAIL_ID { get; set; }
-        public string ITEM_NAME { get; set; }
-        public int ITEM_QUANTITY { get; set; }
-        public string ITEM_UNIT { get; set; }
-        public decimal ORDER_PRICE { get; set; }
-        public string LOCATION { get; set; }
+        public int id_order { get; set; }
+        public int id_order_detail { get; set; }
+        public string item_name { get; set; }
+        public int item_quantity { get; set; }
+        public string item_unit { get; set; }
+        public decimal total_price { get; set; }
+        public string location { get; set; }
     }
 }
