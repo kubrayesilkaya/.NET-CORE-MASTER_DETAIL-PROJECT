@@ -24,8 +24,7 @@ namespace Order_OrderDetail.Controllers
 
         //POST********************************************************************************************
 
-        [Route("[action]")]
-        [HttpPost]
+        [HttpPost("AddOrder")]
         public ActionResult<IEnumerable<string>> AddOrder([FromBody] OrderRequestModel orderRequestModel)
         {
             var response = _orderService.AddOrder(orderRequestModel);
@@ -35,22 +34,37 @@ namespace Order_OrderDetail.Controllers
 
         //GET**********************************************************************************************
 
-        [Route("[action]")]
-        [HttpGet]
-        public IActionResult GetOrderDetail()
-        {
-            var orders = _orderService.GetOrderDetail();
-            return Ok(orders);
-        }
+        //[Route("[action]")]
+        //[HttpGet("GetOrderDetail")]
+        //public IActionResult GetOrderDetail()
+        //{
+        //    var orders = _orderService.GetOrderDetail();
+        //    return Ok(orders);
+        //}
 
         //GET by ID*****************************************************************************************
 
-        [Route("[action]/{id}")]
-        [HttpGet]
-        public ActionResult<OrderEntity> GetOrderDetail(int id)
+        [HttpGet("GetOrderDetailByID")]
+        public ActionResult<OrderEntity> GetOrderDetailByID(int id)
         {
             var order = _orderService.GetOrderDetail(id);
             return Ok(order);
         }
+
+        //GET v2*******************************************************************************************
+
+        [HttpGet("GetOrderDetailv2")]
+        public IActionResult GetOrderDetailv2(int id)
+        {
+            var orderDetails = _orderService.GetOrderDetailv2(id);
+
+            return Ok(orderDetails);
+        }
+
+
+
+
     }
+
+
 }
