@@ -82,10 +82,10 @@ namespace Order_OrderDetail.Services
 
         //GET****************************************************************
 
-        public List<OrderEntity> GetOrderDetail()
-        {
-            return _dbContext.Orders.ToList();
-        }
+        //public List<OrderEntity> GetOrderDetail()
+        //{
+        //    return _dbContext.Orders.ToList();
+        //}
 
         //GET By ID***********************************************************
 
@@ -96,7 +96,50 @@ namespace Order_OrderDetail.Services
                 .Include(o => o.OrderDetails)
                 .FirstOrDefault();
 
+
             return orderAndDetail;
         }
+
+        public List<OrderDetailResponseModel> GetOrderDetailv2(int id)
+        {
+            var list = (from a in _dbContext.Orders
+                        where a.ID_ORDER == id
+                        join b in _dbContext.OrderDetails
+                             on a.ID_ORDER equals b.ID_ORDER into temp
+                        from b in temp.DefaultIfEmpty()
+
+                        select new OrderDetailResponseModel
+                        {
+                            id_order = a.ID_ORDER,
+                            id_order_detail = b.ORDER_DETAIL_ID,
+                            item_name = b.ITEM_NAME,
+                            item_quantity = b.ITEM_QUANTITY,
+                            item_unit = b.ITEM_UNIT,
+                            total_price = a.ORDER_PRICE,
+                            location = a.LOCATION,
+
+                        }).ToList();
+
+
+            return list;
+
+        }
+
+        //public IEnumerable<OrderEntity> GetOrderDetail(int id)
+        //{
+        //    var orderAndDetail = _dbContext.Orders
+        //        .Where(o => o.ID_ORDER == id)
+        //        .Include(o => o.OrderDetails)
+        //        .FirstOrDefault();
+
+        //    var orders = orderAndDetail.OrderDetails.Select(o => o.Order).ToList();
+
+        //    return orders;
+        //}
+
+
+
+        //get metodu düzeltilecek,
+        // item count konfigüre edilecek
     }
 }
