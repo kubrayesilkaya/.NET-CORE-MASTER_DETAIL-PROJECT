@@ -139,7 +139,6 @@ namespace Order_OrderDetail.Services
 
 
 
-        //get metodu düzeltilecek,
         // item count konfigüre edilecek
     }
 }
